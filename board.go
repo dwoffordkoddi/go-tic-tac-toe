@@ -10,13 +10,13 @@ import (
 type Board [][]string
 
 type Player struct {
-	number int
+	number    int
 	character string
 }
 
 var players = []Player{{number: 1, character: "X"}, {number: 2, character: "O"}}
 var currentPlayer Player
-var board =	Board{
+var board = Board{
 	{"-", "-", "-"},
 	{"-", "-", "-"},
 	{"-", "-", "-"},
@@ -90,7 +90,6 @@ func getPlayerSlot(currentPlayer Player) {
 		}
 	}
 
-
 	printBoard()
 	checkWin(currentPlayer)
 
@@ -116,14 +115,14 @@ func printBoard() {
 	for i := 0; i < 3; i++ {
 		for j := 0; j < 3; j++ {
 			switch i {
-				case 0:
-					slot = "A"
-				case 1:
-					slot = "B"
-				case 2:
-					slot = "C"
+			case 0:
+				slot = "A"
+			case 1:
+				slot = "B"
+			case 2:
+				slot = "C"
 			}
-			boardLayout = strings.Replace(boardLayout, slot + strconv.Itoa(j), board[i][j] + " ", 1)
+			boardLayout = strings.Replace(boardLayout, slot+strconv.Itoa(j), board[i][j]+" ", 1)
 		}
 	}
 	fmt.Print(boardLayout)
@@ -146,12 +145,12 @@ func handleError(err error) {
 func getColumn(slot string) int {
 	var inputColumn = slot[:1]
 	switch inputColumn {
-		case "A":
-			return 0
-		case "B":
-			return 1
-		case "C":
-			return 2
+	case "A":
+		return 0
+	case "B":
+		return 1
+	case "C":
+		return 2
 	}
 
 	panic("Not sure how, but you've managed to get this far with a bad column selection")
